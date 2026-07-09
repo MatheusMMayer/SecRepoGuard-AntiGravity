@@ -60,9 +60,7 @@ secrepoguard/
 
 ---
 
-## 4. Avaliação Acadêmica (SBSeg 2026)
-
-Em conformidade com os critérios de avaliação de artefatos científicos do SBSeg 2026, o SecRepoGuard-AntiGravity demonstra excelente desempenho nos seguintes pilares:
+## 4. Critérios de Avaliação
 
 ### A. Disponibilidade (Availability)
 O código-fonte completo está disponível de forma aberta sob a Licença MIT. A ferramenta depende exclusivamente da biblioteca padrão do Python 3 (com exceção do `pytest` para testes unitários), garantindo que possa ser instalada e executada em qualquer plataforma que suporte Python 3.x, sem restrições ou custos.
