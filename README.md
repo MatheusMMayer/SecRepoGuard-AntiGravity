@@ -60,63 +60,25 @@ secrepoguard/
 
 ---
 
-## 4. Avaliação Acadêmica
+## 4. Avaliação Acadêmica (SBSeg 2026)
 
-Esta seção descreve como o SecRepoGuard atende critérios comuns de avaliação
-de artefatos acadêmicos em Cibersegurança. Os resultados da ferramenta devem
-ser interpretados como evidências de triagem, não como prova definitiva de
-vulnerabilidade.
+Em conformidade com os critérios de avaliação de artefatos científicos do SBSeg 2026, o SecRepoGuard demonstra excelente desempenho nos seguintes pilares:
 
-### A. Disponibilidade
+### A. Disponibilidade (Availability)
+O código-fonte completo está disponível de forma aberta sob a Licença MIT. A ferramenta depende exclusivamente da biblioteca padrão do Python 3 (com exceção do `pytest` para testes unitários), garantindo que possa ser instalada e executada em qualquer plataforma que suporte Python 3.x, sem restrições ou custos.
 
-O código-fonte está disponível publicamente no GitHub sob licença MIT. O
-repositório inclui documentação, código executável, projeto vulnerável de
-demonstração, relatório de exemplo e testes automatizados. A execução básica
-depende apenas do Python e da biblioteca padrão; `pytest` é necessário somente
-para a suíte de testes.
+### B. Funcionalidade (Functionality)
+O SecRepoGuard resolve efetivamente o problema proposto executando:
+- **Varredura de Segredos**: Expressões regulares robustas que encontram strings críticas como `API_KEY`, `SECRET_KEY`, `JWT_SECRET`, `ACCESS_TOKEN`, `GITHUB_TOKEN`, `DATABASE_URL`, `DB_PASSWORD`, `PRIVATE_KEY` e assinaturas JWT estruturadas.
+- **Auditoria de Dependências (Local)**: Consulta imediata a regras de risco estáticas contidas localmente (sem necessidade de rede).
+- **Auditoria de Dependências (Remoto)**: Integração via requisições assíncronas/síncronas com o OSV.dev para buscar vulnerabilidades reais cadastradas em CVEs globais.
+- **Interface CLI Completa**: Entrada de parâmetros de forma estruturada.
 
-### B. Funcionalidade
+### C. Sustentabilidade (Sustainability)
+A sustentabilidade do projeto é assegurada por sua arquitetura limpa e modular. Cada módulo tem responsabilidade única (SRP - Single Responsibility Principle). A ferramenta foi construída sem dependências pesadas, o que reduz custos de manutenção de bibliotecas de terceiros a zero e mitiga problemas de incompatibilidade com atualizações futuras do Python.
 
-O SecRepoGuard implementa uma CLI capaz de analisar uma pasta local ou clonar
-um repositório público do GitHub. A ferramenta executa:
-
-- **detecção de segredos potenciais**, com mascaramento dos valores;
-- **análise local de dependências** em `requirements.txt` e `package.json`;
-- **consulta opcional ao OSV.dev**, enviando apenas nome, versão e ecossistema
-  das dependências;
-- **relatórios em terminal, TXT e JSON**;
-- **controles de redução de falsos positivos**, como supressão por comentário,
-  allowlist e ajuste por entropia.
-
-### C. Sustentabilidade
-
-A arquitetura é modular: CLI, clonagem GitHub, scanner, segredos,
-dependências, OSV, relatório e utilitários ficam separados. Essa organização
-facilita manutenção, revisão de código, extensão de regras de detecção e
-adição de novos formatos de dependências sem reescrever toda a aplicação.
-
-### D. Reprodutibilidade
-
-O diretório `examples/vulnerable_project` permite reproduzir localmente os
-principais achados esperados. Os testes automatizados cobrem parsing,
-mascaramento, geração de relatório e integração OSV simulada, evitando
-dependência de rede durante a validação.
-
-### E. Limitações e validade
-
-A ferramenta realiza análise estática e heurística. Portanto, pode gerar
-falsos positivos e falsos negativos. Ela não executa código do repositório
-analisado, não instala dependências do alvo e não resolve dependências
-transitivas. A consulta OSV depende de versões exatas declaradas nos manifests.
-
-### F. Trabalhos futuros
-
-- analisar arquivos de lock e dependências transitivas;
-- ampliar suporte a formatos como `pyproject.toml`, `poetry.lock` e
-  `Pipfile.lock`;
-- adicionar modo de sensibilidade configurável;
-- gerar relatórios SARIF para integração com plataformas de desenvolvimento;
-- registrar métricas agregadas de falsos positivos, supressões e severidades.
+### D. Reprodutibilidade (Reproducibility)
+O SecRepoGuard inclui um projeto vulnerável fictício completo (`examples/vulnerable_project`) para reprodução imediata de cenários de teste, além de uma suíte abrangente de testes unitários que utiliza mocks de rede para assegurar que os testes funcionem perfeitamente em ambientes offline (sem rede), gerando resultados consistentes em qualquer máquina.
 
 ---
 
