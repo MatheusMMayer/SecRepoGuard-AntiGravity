@@ -1,0 +1,68 @@
+================================================================================
+                    SECREPOGUARD - RELATÓRIO DE SEGURANÇA                       
+================================================================================
+Alvo Analisado: Pasta Local (examples/vulnerable_project)
+Total de Segredos Expostos Encontrados: 5
+Total de Riscos em Dependências (Local): 3
+Total de Vulnerabilidades em Dependências (OSV.dev): 4
+Total de Alertas Gerados: 12
+================================================================================
+
+1. SEGREDOS E CREDENCIAIS EXPOSTAS
+--------------------------------------------------------------------------------
+[1] Regra: API Key
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\app.py (Linha 5)
+    Valor Mascarado: AIz...def
+
+[2] Regra: Secret Key
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\app.py (Linha 6)
+    Valor Mascarado: sup...ere
+
+[3] Regra: JWT Secret
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\app.py (Linha 7)
+    Valor Mascarado: jwt...xyz
+
+[4] Regra: Database URL
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\app.py (Linha 10)
+    Valor Mascarado: postgres://admin_user:Sen...23!@localhost:5432/prod_database
+
+[5] Regra: JWT Token
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\app.py (Linha 16)
+    Valor Mascarado: eyJ...X1f
+--------------------------------------------------------------------------------
+
+2. RISCOS DE DEPENDÊNCIAS (VERIFICAÇÃO LOCAL)
+--------------------------------------------------------------------------------
+[1] Pacote: requests (PyPI)
+    Versão Declarada: 2.20.0
+    Severidade: Alto
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\requirements.txt (Linha 2)
+    Descrição: Versão instalada (2.20.0) é inferior à recomendada (2.25.0). Vulnerabilidades conhecidas de vazamento de credenciais (CVE-2018-18074) e SSRF em versões anteriores a 2.25.0.
+
+[2] Pacote: flask (PyPI)
+    Versão Declarada: 1.1.2
+    Severidade: Alto
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\requirements.txt (Linha 4)
+    Descrição: Versão instalada (1.1.2) é inferior à recomendada (2.2.5). Problemas de negação de serviço e segurança de sessão em versões anteriores a 2.2.5.
+
+[3] Pacote: lodash (npm)
+    Versão Declarada: ^4.17.15
+    Severidade: Alto
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\package.json (Linha 8)
+    Descrição: Versão instalada (^4.17.15) é inferior à recomendada (4.17.21). Vulnerabilidade crítica de Prototype Pollution (CVE-2020-8203) em versões anteriores a 4.17.21.
+--------------------------------------------------------------------------------
+
+3. VULNERABILIDADES DE DEPENDÊNCIAS (CONSULTA OSV.DEV)
+--------------------------------------------------------------------------------
+[1] Pacote: requests (PyPI) - ID: GHSA-p5z5-c6xp-83v9
+    Versão Declarada: 2.20.0
+    Arquivo: C:\Users\Mayer\.gemini\antigravity\scratch\secrepoguard\examples\vulnerable_project\requirements.txt (Linha 2)
+    Vulnerabilidade: Use of Out-of-range Pointer Index in requests (CVE-2018-18074)
+--------------------------------------------------------------------------------
+
+================================================================================
+AVISO IMPORTANTE:
+Os achados listados neste relatório são potenciais e baseados em análise estática.
+Recomenda-se triagem e validação humana para eliminação de falsos positivos antes
+de qualquer ação corretiva.
+================================================================================
