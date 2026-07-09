@@ -30,7 +30,7 @@ def format_text_report(
     
     report = []
     report.append("================================================================================")
-    report.append("                    SECREPOGUARD - RELATÓRIO DE SEGURANÇA                       ")
+    report.append("               SECREPOGUARD-ANTIGRAVITY - RELATÓRIO DE SEGURANÇA                ")
     report.append("================================================================================")
     report.append(f"Alvo Analisado: {target_name}")
     report.append(f"Total de Segredos Expostos Encontrados: {summary['total_secrets_found']}")

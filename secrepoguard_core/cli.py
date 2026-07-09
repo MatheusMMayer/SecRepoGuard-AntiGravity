@@ -7,7 +7,7 @@ def get_parser() -> argparse.ArgumentParser:
     Creates and configures the argparse command-line parser.
     """
     parser = argparse.ArgumentParser(
-        description="SecRepoGuard - Ferramenta CLI de Auditoria Básica de Segurança em Repositórios",
+        description="SecRepoGuard-AntiGravity - Ferramenta CLI de Auditoria Básica de Segurança em Repositórios",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Exemplos de uso:

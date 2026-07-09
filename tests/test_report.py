@@ -23,7 +23,7 @@ def test_format_text_report():
     online_risks = []
     
     report = format_text_report("Test Target", secrets, local_risks, online_risks)
-    assert "SECREPOGUARD - RELATÓRIO DE SEGURANÇA" in report
+    assert "SECREPOGUARD-ANTIGRAVITY - RELATÓRIO DE SEGURANÇA" in report
     assert "Alvo Analisado: Test Target" in report
     assert "1. SEGREDOS E CREDENCIAIS EXPOSTAS" in report
     assert "AIz..." in report

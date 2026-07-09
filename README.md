@@ -1,6 +1,6 @@
-# SecRepoGuard - Ferramenta de Auditoria Estática de Segurança para Repositórios
+# SecRepoGuard-AntiGravity - Ferramenta de Auditoria Estática de Segurança para Repositórios
 
-SecRepoGuard é uma ferramenta de linha de comando (CLI) em Python projetada para a auditoria básica e estática de segurança em repositórios de software locais ou remotos (GitHub). Seu foco central está na identificação precoce de **segredos expostos** (credenciais, chaves de API, senhas, chaves privadas) e **dependências desatualizadas ou vulneráveis** (`requirements.txt` e `package.json`).
+SecRepoGuard-AntiGravity é uma ferramenta de linha de comando (CLI) em Python projetada para a auditoria básica e estática de segurança em repositórios de software locais ou remotos (GitHub). Seu foco central está na identificação precoce de **segredos expostos** (credenciais, chaves de API, senhas, chaves privadas) e **dependências desatualizadas ou vulneráveis** (`requirements.txt` e `package.json`).
 
 ---
 
@@ -8,15 +8,15 @@ SecRepoGuard é uma ferramenta de linha de comando (CLI) em Python projetada par
 
 Durante o ciclo de desenvolvimento de software, é comum que desenvolvedores cometam erros de configuração ao deixar chaves privadas, senhas de banco de dados, tokens de autenticação ou chaves de API expostas em arquivos de texto sob controle de versão. Além disso, a utilização de dependências de terceiros com vulnerabilidades conhecidas aumenta significativamente a superfície de ataque da aplicação. 
 
-O SecRepoGuard mitiga esses riscos fornecendo uma varredura rápida, estática e sem execução de código que pode ser facilmente integrada a pipelines de integração contínua (CI/CD) ou utilizada para revisões de segurança pontuais.
+O SecRepoGuard-AntiGravity mitiga esses riscos fornecendo uma varredura rápida, estática e sem execução de código que pode ser facilmente integrada a pipelines de integração contínua (CI/CD) ou utilizada para revisões de segurança pontuais.
 
 ---
 
 ## 2. Requisitos de Segurança & Premissas
 
-Para assegurar a integridade do ambiente do usuário auditando repositórios desconhecidos, o SecRepoGuard adota os seguintes pilares de segurança:
+Para assegurar a integridade do ambiente do usuário auditando repositórios desconhecidos, o SecRepoGuard-AntiGravity adota os seguintes pilares de segurança:
 1. **Sem Execução de Código**: A ferramenta funciona exclusivamente como analisador estático (parsing textual). Ela **não executa** código do repositório auditado.
-2. **Sem Instalação de Dependências**: O SecRepoGuard analisa manifests (`requirements.txt`, `package.json`) apenas como arquivos de texto e não instala nenhum pacote do repositório alvo.
+2. **Sem Instalação de Dependências**: O SecRepoGuard-AntiGravity analisa manifests (`requirements.txt`, `package.json`) apenas como arquivos de texto e não instala nenhum pacote do repositório alvo.
 3. **Privacidade Total de Segredos**: Segredos potenciais são mascarados em todas as saídas geradas e **nunca** são transmitidos para serviços externos.
 4. **Consulta Segura ao OSV.dev**: A integração online com o banco de dados do OSV (Open Source Vulnerabilities) envia estritamente o **nome do pacote, sua versão e seu ecossistema** (p. ex., PyPI ou npm). Nenhum outro dado do código é compartilhado.
 5. **Validação Humana**: Todos os achados identificados pela ferramenta devem ser tratados como **potenciais alertas** e necessitam de triagem analítica por um especialista de segurança.
@@ -62,13 +62,13 @@ secrepoguard/
 
 ## 4. Avaliação Acadêmica (SBSeg 2026)
 
-Em conformidade com os critérios de avaliação de artefatos científicos do SBSeg 2026, o SecRepoGuard demonstra excelente desempenho nos seguintes pilares:
+Em conformidade com os critérios de avaliação de artefatos científicos do SBSeg 2026, o SecRepoGuard-AntiGravity demonstra excelente desempenho nos seguintes pilares:
 
 ### A. Disponibilidade (Availability)
 O código-fonte completo está disponível de forma aberta sob a Licença MIT. A ferramenta depende exclusivamente da biblioteca padrão do Python 3 (com exceção do `pytest` para testes unitários), garantindo que possa ser instalada e executada em qualquer plataforma que suporte Python 3.x, sem restrições ou custos.
 
 ### B. Funcionalidade (Functionality)
-O SecRepoGuard resolve efetivamente o problema proposto executando:
+O SecRepoGuard-AntiGravity resolve efetivamente o problema proposto executando:
 - **Varredura de Segredos**: Expressões regulares robustas que encontram strings críticas como `API_KEY`, `SECRET_KEY`, `JWT_SECRET`, `ACCESS_TOKEN`, `GITHUB_TOKEN`, `DATABASE_URL`, `DB_PASSWORD`, `PRIVATE_KEY` e assinaturas JWT estruturadas.
 - **Auditoria de Dependências (Local)**: Consulta imediata a regras de risco estáticas contidas localmente (sem necessidade de rede).
 - **Auditoria de Dependências (Remoto)**: Integração via requisições assíncronas/síncronas com o OSV.dev para buscar vulnerabilidades reais cadastradas em CVEs globais.
@@ -78,7 +78,7 @@ O SecRepoGuard resolve efetivamente o problema proposto executando:
 A sustentabilidade do projeto é assegurada por sua arquitetura limpa e modular. Cada módulo tem responsabilidade única (SRP - Single Responsibility Principle). A ferramenta foi construída sem dependências pesadas, o que reduz custos de manutenção de bibliotecas de terceiros a zero e mitiga problemas de incompatibilidade com atualizações futuras do Python.
 
 ### D. Reprodutibilidade (Reproducibility)
-O SecRepoGuard inclui um projeto vulnerável fictício completo (`examples/vulnerable_project`) para reprodução imediata de cenários de teste, além de uma suíte abrangente de testes unitários que utiliza mocks de rede para assegurar que os testes funcionem perfeitamente em ambientes offline (sem rede), gerando resultados consistentes em qualquer máquina.
+O SecRepoGuard-AntiGravity inclui um projeto vulnerável fictício completo (`examples/vulnerable_project`) para reprodução imediata de cenários de teste, além de uma suíte abrangente de testes unitários que utiliza mocks de rede para assegurar que os testes funcionem perfeitamente em ambientes offline (sem rede), gerando resultados consistentes em qualquer máquina.
 
 ---
 
@@ -105,7 +105,7 @@ O SecRepoGuard inclui um projeto vulnerável fictício completo (`examples/vulne
 
 ### Passo 2: Execução básica da CLI
 
-O SecRepoGuard aceita os seguintes parâmetros de linha de comando:
+O SecRepoGuard-AntiGravity aceita os seguintes parâmetros de linha de comando:
 
 | Argumento | Tipo | Descrição |
 | :--- | :--- | :--- |
